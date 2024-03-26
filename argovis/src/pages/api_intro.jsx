@@ -51,12 +51,20 @@ class APIintro extends React.Component {
 							<li>CCHDO ship-based profile data, <pre style={{'display':'inline'}}>/cchdo</pre></li>
 							<li>tropical cyclone data from HURDAT and JTWC, <pre style={{'display':'inline'}}>/tc</pre></li>
 							<li>Global Drifter Program data, <pre style={{'display':'inline'}}>/drifters</pre></li>
-							<li>Argone float location forecasts, <pre style={{'display':'inline'}}>/argone</pre></li>
-							<li>Argo float trajectories, <pre style={{'display':'inline'}}>/argotrajectories</pre></li>
+							<li>Easy Ocean, <pre style={{'display':'inline'}}>/easyocean</pre></li>
 							<li>several gridded products:</li>
 							<ul>
 								<li>Roemmich-Gilson total temperature and salinity grids, <pre style={{'display':'inline'}}>/grids/rg09</pre></li>
 								<li>ocean heat content, <pre style={{'display':'inline'}}>/grids/kg21</pre></li>
+								<li>GLODAP, <pre style={{'display':'inline'}}>/grids/glodap</pre></li>
+							</ul>
+							<li>Argone float location forecasts, <pre style={{'display':'inline'}}>/argone</pre></li>
+							<li>Argo float trajectories, <pre style={{'display':'inline'}}>/argotrajectories</pre></li>	
+							<li>several satellite-based timeseries:</li>
+							<ul>
+								<li>NOAA sea surface temperature, <pre style={{'display':'inline'}}>/timeseries/noaasst</pre></li>
+								<li>Copernicus sea surface height, <pre style={{'display':'inline'}}>/timeseries/copernicussla</pre></li>
+								<li>CCMP wind vector product, <pre style={{'display':'inline'}}>/timeseries/ccmpwind</pre></li>
 							</ul>
 						</ul>
 
@@ -150,6 +158,13 @@ class APIintro extends React.Component {
 						<p>In the event we are curious to see results that are interior to the intersection of two or more polygons, Argovis also presents a multipolygon option:</p>
 						<p><a href='https://argovis-api.colorado.edu/argo?startDate=2023-01-01T00:00:00Z&endDate=2023-01-10T00:00:00Z&multipolygon=[[[-40,35],[-40,45],[-30,45],[-30,35],[-40,35]],[[-35,35],[-35,45],[-25,45],[-25,35],[-35,35]]]&compression=minimal'>https://argovis-api.colorado.edu/argo?startDate=2023-01-01T00:00:00Z&endDate=2023-01-10T00:00:00Z&multipolygon=[[[-40,35],[-40,45],[-30,45],[-30,35],[-40,35]],[[-35,35],[-35,45],[-25,45],[-25,35],[-35,35]]]&compression=minimal</a></p>
 						<p>Note the profiles returned in this case are interior to both polygons listed. There's no limit to the number of polygons you can list in multipolygon; each will further filter down the number of profiles returned to be interior to all of them.</p>
+						<h6>Box regions</h6>
+						<p>The polygon region definitions you've seen so far define regions on the globe by connecting vertexes with geodesic edges. If instead we want a region bounded by lines of constant latitude and longitude, there is the box query string parameter. Compare two similar but different searches, first with polygon, similar to the above, tracing geodesics between four corners of a region, and second with a box mode query:</p>
+						<a href='https://argovis-api.colorado.edu/argo?startDate=2017-08-01T00:00:00.000000Z&endDate=2017-09-01T00:00:00.000000Z&polygon=[[-20,70],[20,70],[20,72],[-20,72],[-20,70]]'>https://argovis-api.colorado.edu/argo?startDate=2017-08-01T00:00:00.000000Z&endDate=2017-09-01T00:00:00.000000Z&polygon=[[-20,70],[20,70],[20,72],[-20,72],[-20,70]]</a>
+						<p>versus</p>
+						<a href='https://argovis-api.colorado.edu/argo?startDate=2017-08-01T00:00:00.000000Z&endDate=2017-09-01T00:00:00.000000Z&box=[[-20,70],[20,72]]'>https://argovis-api.colorado.edu/argo?startDate=2017-08-01T00:00:00.000000Z&endDate=2017-09-01T00:00:00.000000Z&box=[[-20,70],[20,72]]</a>
+						<p>In your programming language of choice, find the minimum and maximum latitudes of profiles returned by each query. Notice that while both regions share the same corners, the polygon search actually returns profiles with latitudes higher than the region's northermost corners since geodesics between two points sharing a latitude deflect north in this far-north search region. Meanwhile, the latitudes of profiles in the box region are confined between the lines of constant latitude connecting the vertexes and defining the top and bottom of the box.</p>
+						<p>A final note on box mode notation: note that box mode expects exactly two vertexes: the most southern and western corner first, followed by the most northern and eastern corner.</p>
 					</div>
 				</div>
 			</>

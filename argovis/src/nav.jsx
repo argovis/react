@@ -47,6 +47,9 @@ class ArgovisNav extends React.Component {
 			        <li className="nav-item">
 			          <a className="nav-link" href="/about">About</a>
 			        </li>
+			        <li className="nav-item">
+			        	<a className="nav-link btn btn-primary" href="/hackathon" style={{'color':'#FFFFFF'}}>Argovis Hackathon 2024</a>
+			        </li>
 			      </ul>
 			    </div>
 			  </div>

@@ -246,7 +246,6 @@ class DriftersExplore extends React.Component {
 							<FeatureGroup ref={this.fgRef}>
 								<EditControl
 								position='topleft'
-								onEdited={p => helpers.onPolyEdit.bind(this)(p)}
 								onCreated={p => helpers.onPolyCreate.bind(this)(p)}
 								onDeleted={p => helpers.onPolyDelete.bind(this)(this.defaultPolygon,p)}
 								onDrawStop={p => helpers.onDrawStop.bind(this)(p)}
@@ -262,6 +261,9 @@ class DriftersExplore extends React.Component {
 											fillOpacity: 0
 										}
 									}
+								}}
+								edit={{
+									edit: false
 								}}
 								/>
 								<Polygon key={Math.random()} positions={this.state.interpolated_polygon.map(x => [x[1],helpers.mutateLongitude(x[0], this.state.centerlon)])} fillOpacity={0}></Polygon>

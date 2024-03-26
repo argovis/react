@@ -41,8 +41,8 @@ class ArgoAbout extends React.Component {
 							<li><b>29 April - 1 May 2024:</b> Online Argovis Hackathon (links coming soon!)</li>
 							<li>In person Argovis working sessions:
 								<ul>
-									<li><b>March 26 2024, 10:30-12:30 PT:</b> Scripps Institution of Oceanography, University of California San Diego</li>
-									<li><b>April 16 2024, 10:30-12:30 MT:</b> University of Colorado Boulder</li>
+									<li><b>March 26 2024, 11:00-12:30 PT:</b> Scripps Institution of Oceanography, University of California San Diego</li>
+									<li><b>April 16 2024, 11:00-12:30 MT:</b> University of Colorado Boulder</li>
 								</ul>
 							</li>
 							<li><b>19-22 February 2024:</b> Argovis booth at <a href='https://www.agu.org/ocean-sciences-meeting' target="_blank" rel="noreferrer">OSM2024</a></li>
@@ -116,7 +116,7 @@ class ArgoAbout extends React.Component {
 							</div>
 						</div>
 
-						<h3>Identification of data sources</h3>
+						<h3 id='datasources'>Identification of data sources</h3>
 						<p><b>Citation for the Argovis web application and the Argovis database:</b> Tucker, T., D. Giglio, 
 						M. Scanderbeg, and S.S.P. Shen: Argovis: A Web Application for Fast Delivery, Visualization, and 
 						Analysis of Argo Data. J. Atmos. Oceanic Technol., 37, 401–416, <a href="https://doi.org/10.1175/JTECH-D-19-0041.1" target="_blank" rel="noreferrer">https://doi.org/10.1175/JTECH-D-19-0041.1</a></p>
@@ -177,7 +177,7 @@ class ArgoAbout extends React.Component {
 						<p>argovis@colorado.edu</p>
 						<p>Donata Giglio, University of Colorado Boulder</p>
 						<p>donata.giglio@colorado.edu</p>
-						<p>Bill Mills, University of Colorado Boulder</p>
+						<p>Katie Mills, University of Colorado Boulder</p>
 						<p>william.mills-1@colorado.edu</p>
 						<p>Megan Scanderbeg, Scripps Institution of Oceanography</p>
 						<p>mscanderbeg@ucsd.edu</p>

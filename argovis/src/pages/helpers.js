@@ -94,12 +94,7 @@ helpers.onPolyCreate = function(payload){
 
 helpers.onPolyDelete = function(defaultPoly, payload){
 
-	this.setState({polygon: defaultPoly, maxDayspan: this.defaultDayspan, startDate: this.state.startDate, endDate: this.state.endDate, refreshData: true})
-}
-
-helpers.onPolyEdit = function(payload){
-
-	payload.layers.eachLayer(layer => helpers.fetchPolygon.bind(this)(layer.getLatLngs()[0]))
+	this.setState({polygon: defaultPoly, interpolated_polygon: defaultPoly, maxDayspan: this.defaultDayspan, startDate: this.state.startDate, endDate: this.state.endDate, refreshData: true})
 }
 
 helpers.fetchPolygon = function(coords){

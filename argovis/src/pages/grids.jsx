@@ -249,7 +249,7 @@ class Grids extends React.Component {
     }
 
     fetchPolygon(coords){
-    	helpers.fetchPolygon.bind(this)(coords)   	
+    	helpers.fetchPolygon.bind(this)(coords)
     }
 
     dateRangeMultiplyer(s){
@@ -418,7 +418,6 @@ class Grids extends React.Component {
 						  <FeatureGroup ref={this.fgRef}>
 						    <EditControl
 						      position='topleft'
-						      onEdited={p => helpers.onPolyEdit.bind(this)(p)}
 						      onCreated={p => helpers.onPolyCreate.bind(this)(p)}
 						      onDeleted={p => helpers.onPolyDelete.bind(this)(this.defaultPolygon, p)}
 						      onDrawStop={p => helpers.onDrawStop.bind(this)(p)}
@@ -435,6 +434,9 @@ class Grids extends React.Component {
                     	}
                     }
 						      }}
+						      edit={{
+										edit: false
+									}}
 						    />
 						    <Polygon key={Math.random()} positions={this.state.interpolated_polygon.map(x => [x[1],x[0]])} fillOpacity={0}></Polygon>
 						  </FeatureGroup>

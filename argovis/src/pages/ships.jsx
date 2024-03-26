@@ -356,7 +356,6 @@ class ShipsExplore extends React.Component {
 							<FeatureGroup ref={this.fgRef}>
 								<EditControl
 								position='topleft'
-								onEdited={p => helpers.onPolyEdit.bind(this)(p)}
 								onCreated={p => helpers.onPolyCreate.bind(this)(p)}
 								onDeleted={p => helpers.onPolyDelete.bind(this)([],p)}
 								onDrawStop={p => helpers.onDrawStop.bind(this)(p)}
@@ -372,6 +371,9 @@ class ShipsExplore extends React.Component {
 											fillOpacity: 0
 										}
 									}
+								}}
+								edit={{
+									edit: false
 								}}
 								/>
 								<Polygon key={Math.random()} positions={this.state.interpolated_polygon.map(x => [x[1],x[0]])} fillOpacity={0}></Polygon>
