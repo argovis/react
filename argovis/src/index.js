@@ -18,7 +18,6 @@ import APIintro from "./pages/api_intro"
 import Hackathon from "./pages/hackathon2024"
 import ArgoURLhelper from "./pages/argoURLhelper"
 
-
 export default function App() {
   useEffect(() => {    
     // refresh iff query string changed onpopstate, so the back button works in a relatively reasonable manner and hash changes dont trigger refresh
