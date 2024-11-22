@@ -11,11 +11,443 @@ class Grids extends React.Component {
     constructor(props) {
       super(props);
 
+	  // someday: get this from the database
+	  this.glodapDataInfo = [
+		[
+			"Cant",
+			"Cant_error",
+			"Cant_Input_mean",
+			"Cant_Input_std",
+			"Cant_Input_N",
+			"Cant_relerr",
+			"NO3",
+			"NO3_error",
+			"NO3_Input_mean",
+			"NO3_Input_std",
+			"NO3_Input_N",
+			"NO3_relerr",
+			"OmegaA",
+			"OmegaA_error",
+			"OmegaA_Input_mean",
+			"OmegaA_Input_std",
+			"OmegaA_Input_N",
+			"OmegaA_relerr",
+			"OmegaC",
+			"OmegaC_error",
+			"OmegaC_Input_mean",
+			"OmegaC_Input_std",
+			"OmegaC_Input_N",
+			"OmegaC_relerr",
+			"oxygen",
+			"oxygen_error",
+			"oxygen_Input_mean",
+			"oxygen_Input_std",
+			"oxygen_Input_N",
+			"oxygen_relerr",
+			"pHts25p0",
+			"pHts25p0_error",
+			"pHts25p0_Input_mean",
+			"pHts25p0_Input_std",
+			"pHts25p0_Input_N",
+			"pHts25p0_relerr",
+			"pHtsinsitutp",
+			"pHtsinsitutp_error",
+			"pHtsinsitutp_Input_mean",
+			"pHtsinsitutp_Input_std",
+			"pHtsinsitutp_Input_N",
+			"pHtsinsitutp_relerr",
+			"PI_TCO2",
+			"PI_TCO2_error",
+			"PI_TCO2_Input_mean",
+			"PI_TCO2_Input_std",
+			"PI_TCO2_Input_N",
+			"PI_TCO2_relerr",
+			"PO4",
+			"PO4_error",
+			"PO4_Input_mean",
+			"PO4_Input_std",
+			"PO4_Input_N",
+			"PO4_relerr",
+			"salinity",
+			"salinity_error",
+			"salinity_Input_mean",
+			"salinity_Input_std",
+			"salinity_Input_N",
+			"salinity_relerr",
+			"silicate",
+			"silicate_error",
+			"silicate_Input_mean",
+			"silicate_Input_std",
+			"silicate_Input_N",
+			"silicate_relerr",
+			"TAlk",
+			"TAlk_error",
+			"TAlk_Input_mean",
+			"TAlk_Input_std",
+			"TAlk_Input_N",
+			"TAlk_relerr",
+			"TCO2",
+			"TCO2_error",
+			"TCO2_Input_mean",
+			"TCO2_Input_std",
+			"TCO2_Input_N",
+			"TCO2_relerr",
+			"temperature",
+			"temperature_error",
+			"temperature_Input_mean",
+			"temperature_Input_std",
+			"temperature_Input_N",
+			"temperature_relerr"
+		],
+		[
+			"units",
+			"long_name"
+		],
+		[
+			[
+				"micro-mol kg-1",
+				"moles of anthropogenic carbon content per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"anthropogenic carbon content error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of nitrate per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"nitrate error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"",
+				"aragonite saturation state calculated at in situ temperature and pressure"
+			],
+			[
+				"",
+				"OmegaAr error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"",
+				"calcite saturation state calculated at in situ temperature and pressure"
+			],
+			[
+				"",
+				"OmegaCa error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of dissolved molecular oxygen per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"dissolved molecular oxygen error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"",
+				"seawater ph reported on total scale at standard temperature (25C) and pressure (0dbar)"
+			],
+			[
+				"",
+				"pH error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"",
+				"seawater ph reported on total scale at in situ temperature and pressure"
+			],
+			[
+				"",
+				"pH error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of pre-industrial dissolved inorganic carbon per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"pre-industrial dissolved inorganic carbon error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of phosphate per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"phosphate error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"",
+				"seawater practical salinity"
+			],
+			[
+				"",
+				"practical salinity error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of silicate per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"silicate error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"seawater alkalinity expressed as mole equivalent per unit mass"
+			],
+			[
+				"micro-mol kg-1",
+				"total alkalinity error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"micro-mol kg-1",
+				"moles of dissolved inorganic carbon per unit mass in seawater"
+			],
+			[
+				"micro-mol kg-1",
+				"dissolved inorganic carbon error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			],
+			[
+				"degrees celcius",
+				"seawater temperature"
+			],
+			[
+				"degrees celcius",
+				"temperature error"
+			],
+			[
+				"micro-mol kg-1",
+				"bin averaged input data"
+			],
+			[
+				"micro-mol kg-1",
+				"standard deviation of bin averaged input data"
+			],
+			[
+				"",
+				"number of data in bins"
+			],
+			[
+				"",
+				"relative error"
+			]
+		]
+	]
+
       this.defaultPolygon = [[-52.382812,53.225768],[-62.050781,48.107431],[-72.773438,43.325178],[-77.695313,37.996163],[-81.5625,32.990236],[-82.089844,27.683528],[-78.925781,22.755921],[-71.547389,23.008026],[-64.160156,22.917923],[-57.673458,28.712256],[-50.449219,34.161818],[-40.078125,44.590467],[-35.683594,51.618017],[-43.066406,54.265224],[-52.382812,53.225768]]
       let q = new URLSearchParams(window.location.search) // parse out query string
-      document.title = 'Argovis - Explore ' + q.get('grid') + ' grid'
+      document.title = 'Argovis - Explore ' + q.get('lattice') + ' grid'
       this.state = {
-      	grid: [],
+		gridcells: [],
       	points: [],
       	subpoints: [],
       	data: [],
@@ -23,156 +455,210 @@ class Grids extends React.Component {
       	interpolated_polygon: q.has('polygon') ? helpers.insertPointsInPolygon(JSON.parse(q.get('polygon'))) : helpers.insertPointsInPolygon(this.defaultPolygon),
       	min: 0,
       	max: 1,
+		user_defined_min: false,
+		user_defined_max: false,
       	levelindex: q.has('levelindex') ? q.get('levelindex') : 0,
       	sublevelindex: q.has('sublevelindex') ? q.get('sublevelindex') : 0,
-      	timestep: q.has('timestep') ? q.get('timestep') : {
-      		'rg09_temperature': "2004-01-15",
-      		'rg09_salinity': "2004-01-15",
-      		'kg21_ohc15to300': "2005-01-15"
-      	}[q.get('grid')],
-      	selectedGrid: q.get('grid'),
+      	grid	: q.get('grid'),
       	lattice: q.get('lattice'),
       	refreshData: true,
+		remapData: false,
       	apiKey: localStorage.getItem('apiKey') ? localStorage.getItem('apiKey') : 'guest',
       	subgrid: q.has('subgrid') ? q.get('subgrid') === 'true' : false,
       	scale: chroma.scale(['#440154', '#482777', '#3f4a8a', '#31678e', '#26838f', '#1f9d8a', '#6cce5a', '#b6de2b', '#fee825']),
       	centerlon: -70
       }
 
+	  this.state.timestep = q.has('timestep') ? q.get('timestep') : {
+		'rg09': "2004-01-15",
+		'kg21': "2005-01-15",
+	  	'glodap': "1000-01-01"
+	  }[this.state.lattice]
       this.state.subtimestep = q.has('subtimestep') ? q.get('subtimestep') : this.state.timestep
-      this.state.units = {
-      	'rg09_temperature': 'degree celcius (ITS-90)',
-      	'rg09_salinity':  'psu',
-      	'kg21_ohc15to300': 'J/m^2'
-      }[this.state.selectedGrid]
+      this.state.units = this.chooseUnits(this.state.grid)
       this.state.levelunits = {
-      	'rg09_temperature': 'dbar',
-      	'rg09_salinity':  'dbar',
-      	'kg21_ohc15to300': 'integral, 15-300 dbar'
-      }[this.state.selectedGrid]
+      	'rg09': 'dbar',
+      	'kg21': 'integral, 15-300 dbar',
+		'glodap': 'm'
+      }[this.state.lattice]
       this.rawLevels = {
-      	'rg09_temperature': [2.5,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,182.5,200,220,240,260,280,300,320,340,360,380,400,420,440,462.5,500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1412.5,1500,1600,1700,1800,1900,1975],
-      	'rg09_salinity': [2.5,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,182.5,200,220,240,260,280,300,320,340,360,380,400,420,440,462.5,500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1412.5,1500,1600,1700,1800,1900,1975],
-      	'kg21_ohc15to300': [15]
-      }[this.state.selectedGrid]
+      	'rg09': [2.5,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,182.5,200,220,240,260,280,300,320,340,360,380,400,420,440,462.5,500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1412.5,1500,1600,1700,1800,1900,1975],
+      	'kg21': [15],
+		'glodap': [0,10,20,30,50,75,100,125,150,200,250,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1750,2000,2500,3000,3500,4000,4500,5000,5500]
+      }[this.state.lattice]
       this.levels = this.constructLevelOptions(this.rawLevels)
       this.timesteps = {
-      	'rg09_temperature': this.constructDateOptions(["2004-01-15","2004-02-15","2004-03-15","2004-04-15","2004-05-15","2004-06-15","2004-07-15","2004-08-15","2004-09-15","2004-10-15","2004-11-15","2004-12-15","2005-01-15","2005-02-15","2005-03-15","2005-04-15","2005-05-15","2005-06-15","2005-07-15","2005-08-15","2005-09-15","2005-10-15","2005-11-15","2005-12-15","2006-01-15","2006-02-15","2006-03-15","2006-04-15","2006-05-15","2006-06-15","2006-07-15","2006-08-15","2006-09-15","2006-10-15","2006-11-15","2006-12-15","2007-01-15","2007-02-15","2007-03-15","2007-04-15","2007-05-15","2007-06-15","2007-07-15","2007-08-15","2007-09-15","2007-10-15","2007-11-15","2007-12-15","2008-01-15","2008-02-15","2008-03-15","2008-04-15","2008-05-15","2008-06-15","2008-07-15","2008-08-15","2008-09-15","2008-10-15","2008-11-15","2008-12-15","2009-01-15","2009-02-15","2009-03-15","2009-04-15","2009-05-15","2009-06-15","2009-07-15","2009-08-15","2009-09-15","2009-10-15","2009-11-15","2009-12-15","2010-01-15","2010-02-15","2010-03-15","2010-04-15","2010-05-15","2010-06-15","2010-07-15","2010-08-15","2010-09-15","2010-10-15","2010-11-15","2010-12-15","2011-01-15","2011-02-15","2011-03-15","2011-04-15","2011-05-15","2011-06-15","2011-07-15","2011-08-15","2011-09-15","2011-10-15","2011-11-15","2011-12-15","2012-01-15","2012-02-15","2012-03-15","2012-04-15","2012-05-15","2012-06-15","2012-07-15","2012-08-15","2012-09-15","2012-10-15","2012-11-15","2012-12-15","2013-01-15","2013-02-15","2013-03-15","2013-04-15","2013-05-15","2013-06-15","2013-07-15","2013-08-15","2013-09-15","2013-10-15","2013-11-15","2013-12-15","2014-01-15","2014-02-15","2014-03-15","2014-04-15","2014-05-15","2014-06-15","2014-07-15","2014-08-15","2014-09-15","2014-10-15","2014-11-15","2014-12-15","2015-01-15","2015-02-15","2015-03-15","2015-04-15","2015-05-15","2015-06-15","2015-07-15","2015-08-15","2015-09-15","2015-10-15","2015-11-15","2015-12-15","2016-01-15","2016-02-15","2016-03-15","2016-04-15","2016-05-15","2016-06-15","2016-07-15","2016-08-15","2016-09-15","2016-10-15","2016-11-15","2016-12-15","2017-01-15","2017-02-15","2017-03-15","2017-04-15","2017-05-15","2017-06-15","2017-07-15","2017-08-15","2017-09-15","2017-10-15","2017-11-15","2017-12-15","2018-01-15","2018-02-15","2018-03-15","2018-04-15","2018-05-15","2018-06-15","2018-07-15","2018-08-15","2018-09-15","2018-10-15","2018-11-15","2018-12-15","2019-01-15","2019-02-15","2019-03-15","2019-04-15","2019-05-15","2019-06-15","2019-07-15","2019-08-15","2019-09-15","2019-10-15","2019-11-15","2019-12-15","2020-01-15","2020-02-15","2020-03-15","2020-04-15","2020-05-15","2020-06-15","2020-07-15","2020-08-15","2020-09-15","2020-10-15","2020-11-15","2020-12-15","2021-01-15","2021-02-15","2021-03-15","2021-04-15","2021-05-15","2021-06-15","2021-07-15","2021-08-15","2021-09-15","2021-10-15","2021-11-15","2021-12-15","2022-01-15","2022-02-15","2022-03-15","2022-04-15","2022-05-15","2022-06-15","2022-07-15","2022-08-15","2022-09-15","2022-10-15","2022-11-15","2022-12-15","2023-01-15","2023-02-15","2023-03-15","2023-04-15","2023-05-15","2023-06-15","2023-07-15","2023-08-15","2023-09-15","2023-10-15","2023-11-15","2023-12-15","2024-01-15"]),
-      	'rg09_salinity': this.constructDateOptions(["2004-01-15","2004-02-15","2004-03-15","2004-04-15","2004-05-15","2004-06-15","2004-07-15","2004-08-15","2004-09-15","2004-10-15","2004-11-15","2004-12-15","2005-01-15","2005-02-15","2005-03-15","2005-04-15","2005-05-15","2005-06-15","2005-07-15","2005-08-15","2005-09-15","2005-10-15","2005-11-15","2005-12-15","2006-01-15","2006-02-15","2006-03-15","2006-04-15","2006-05-15","2006-06-15","2006-07-15","2006-08-15","2006-09-15","2006-10-15","2006-11-15","2006-12-15","2007-01-15","2007-02-15","2007-03-15","2007-04-15","2007-05-15","2007-06-15","2007-07-15","2007-08-15","2007-09-15","2007-10-15","2007-11-15","2007-12-15","2008-01-15","2008-02-15","2008-03-15","2008-04-15","2008-05-15","2008-06-15","2008-07-15","2008-08-15","2008-09-15","2008-10-15","2008-11-15","2008-12-15","2009-01-15","2009-02-15","2009-03-15","2009-04-15","2009-05-15","2009-06-15","2009-07-15","2009-08-15","2009-09-15","2009-10-15","2009-11-15","2009-12-15","2010-01-15","2010-02-15","2010-03-15","2010-04-15","2010-05-15","2010-06-15","2010-07-15","2010-08-15","2010-09-15","2010-10-15","2010-11-15","2010-12-15","2011-01-15","2011-02-15","2011-03-15","2011-04-15","2011-05-15","2011-06-15","2011-07-15","2011-08-15","2011-09-15","2011-10-15","2011-11-15","2011-12-15","2012-01-15","2012-02-15","2012-03-15","2012-04-15","2012-05-15","2012-06-15","2012-07-15","2012-08-15","2012-09-15","2012-10-15","2012-11-15","2012-12-15","2013-01-15","2013-02-15","2013-03-15","2013-04-15","2013-05-15","2013-06-15","2013-07-15","2013-08-15","2013-09-15","2013-10-15","2013-11-15","2013-12-15","2014-01-15","2014-02-15","2014-03-15","2014-04-15","2014-05-15","2014-06-15","2014-07-15","2014-08-15","2014-09-15","2014-10-15","2014-11-15","2014-12-15","2015-01-15","2015-02-15","2015-03-15","2015-04-15","2015-05-15","2015-06-15","2015-07-15","2015-08-15","2015-09-15","2015-10-15","2015-11-15","2015-12-15","2016-01-15","2016-02-15","2016-03-15","2016-04-15","2016-05-15","2016-06-15","2016-07-15","2016-08-15","2016-09-15","2016-10-15","2016-11-15","2016-12-15","2017-01-15","2017-02-15","2017-03-15","2017-04-15","2017-05-15","2017-06-15","2017-07-15","2017-08-15","2017-09-15","2017-10-15","2017-11-15","2017-12-15","2018-01-15","2018-02-15","2018-03-15","2018-04-15","2018-05-15","2018-06-15","2018-07-15","2018-08-15","2018-09-15","2018-10-15","2018-11-15","2018-12-15","2019-01-15","2019-02-15","2019-03-15","2019-04-15","2019-05-15","2019-06-15","2019-07-15","2019-08-15","2019-09-15","2019-10-15","2019-11-15","2019-12-15","2020-01-15","2020-02-15","2020-03-15","2020-04-15","2020-05-15","2020-06-15","2020-07-15","2020-08-15","2020-09-15","2020-10-15","2020-11-15","2020-12-15","2021-01-15","2021-02-15","2021-03-15","2021-04-15","2021-05-15","2021-06-15","2021-07-15","2021-08-15","2021-09-15","2021-10-15","2021-11-15","2021-12-15","2022-01-15","2022-02-15","2022-03-15","2022-04-15","2022-05-15","2022-06-15","2022-07-15","2022-08-15","2022-09-15","2022-10-15","2022-11-15","2022-12-15","2023-01-15","2023-02-15","2023-03-15","2023-04-15","2023-05-15","2023-06-15","2023-07-15","2023-08-15","2023-09-15","2023-10-15","2023-11-15","2023-12-15","2024-01-15"]),
-      	'kg21_ohc15to300': this.constructDateOptions(["2005-01-15","2005-02-15","2005-03-15","2005-04-15","2005-05-15","2005-06-15","2005-07-15","2005-08-15","2005-09-15","2005-10-15","2005-11-15","2005-12-15","2006-01-15","2006-02-15","2006-03-15","2006-04-15","2006-05-15","2006-06-15","2006-07-15","2006-08-15","2006-09-15","2006-10-15","2006-11-15","2006-12-15","2007-01-15","2007-02-15","2007-03-15","2007-04-15","2007-05-15","2007-06-15","2007-07-15","2007-08-15","2007-09-15","2007-10-15","2007-11-15","2007-12-15","2008-01-15","2008-02-15","2008-03-15","2008-04-15","2008-05-15","2008-06-15","2008-07-15","2008-08-15","2008-09-15","2008-10-15","2008-11-15","2008-12-15","2009-01-15","2009-02-15","2009-03-15","2009-04-15","2009-05-15","2009-06-15","2009-07-15","2009-08-15","2009-09-15","2009-10-15","2009-11-15","2009-12-15","2010-01-15","2010-02-15","2010-03-15","2010-04-15","2010-05-15","2010-06-15","2010-07-15","2010-08-15","2010-09-15","2010-10-15","2010-11-15","2010-12-15","2011-01-15","2011-02-15","2011-03-15","2011-04-15","2011-05-15","2011-06-15","2011-07-15","2011-08-15","2011-09-15","2011-10-15","2011-11-15","2011-12-15","2012-01-15","2012-02-15","2012-03-15","2012-04-15","2012-05-15","2012-06-15","2012-07-15","2012-08-15","2012-09-15","2012-10-15","2012-11-15","2012-12-15","2013-01-15","2013-02-15","2013-03-15","2013-04-15","2013-05-15","2013-06-15","2013-07-15","2013-08-15","2013-09-15","2013-10-15","2013-11-15","2013-12-15","2014-01-15","2014-02-15","2014-03-15","2014-04-15","2014-05-15","2014-06-15","2014-07-15","2014-08-15","2014-09-15","2014-10-15","2014-11-15","2014-12-15","2015-01-15","2015-02-15","2015-03-15","2015-04-15","2015-05-15","2015-06-15","2015-07-15","2015-08-15","2015-09-15","2015-10-15","2015-11-15","2015-12-15","2016-01-15","2016-02-15","2016-03-15","2016-04-15","2016-05-15","2016-06-15","2016-07-15","2016-08-15","2016-09-15","2016-10-15","2016-11-15","2016-12-15","2017-01-15","2017-02-15","2017-03-15","2017-04-15","2017-05-15","2017-06-15","2017-07-15","2017-08-15","2017-09-15","2017-10-15","2017-11-15","2017-12-15","2018-01-15","2018-02-15","2018-03-15","2018-04-15","2018-05-15","2018-06-15","2018-07-15","2018-08-15","2018-09-15","2018-10-15","2018-11-15","2018-12-15","2019-01-15","2019-02-15","2019-03-15","2019-04-15","2019-05-15","2019-06-15","2019-07-15","2019-08-15","2019-09-15","2019-10-15","2019-11-15","2019-12-15","2020-01-15","2020-02-15","2020-03-15","2020-04-15","2020-05-15","2020-06-15","2020-07-15","2020-08-15","2020-09-15","2020-10-15","2020-11-15","2020-12-15"])
-      }[this.state.selectedGrid]
+      	'rg09': this.constructDateOptions(["2004-01-15","2004-02-15","2004-03-15","2004-04-15","2004-05-15","2004-06-15","2004-07-15","2004-08-15","2004-09-15","2004-10-15","2004-11-15","2004-12-15","2005-01-15","2005-02-15","2005-03-15","2005-04-15","2005-05-15","2005-06-15","2005-07-15","2005-08-15","2005-09-15","2005-10-15","2005-11-15","2005-12-15","2006-01-15","2006-02-15","2006-03-15","2006-04-15","2006-05-15","2006-06-15","2006-07-15","2006-08-15","2006-09-15","2006-10-15","2006-11-15","2006-12-15","2007-01-15","2007-02-15","2007-03-15","2007-04-15","2007-05-15","2007-06-15","2007-07-15","2007-08-15","2007-09-15","2007-10-15","2007-11-15","2007-12-15","2008-01-15","2008-02-15","2008-03-15","2008-04-15","2008-05-15","2008-06-15","2008-07-15","2008-08-15","2008-09-15","2008-10-15","2008-11-15","2008-12-15","2009-01-15","2009-02-15","2009-03-15","2009-04-15","2009-05-15","2009-06-15","2009-07-15","2009-08-15","2009-09-15","2009-10-15","2009-11-15","2009-12-15","2010-01-15","2010-02-15","2010-03-15","2010-04-15","2010-05-15","2010-06-15","2010-07-15","2010-08-15","2010-09-15","2010-10-15","2010-11-15","2010-12-15","2011-01-15","2011-02-15","2011-03-15","2011-04-15","2011-05-15","2011-06-15","2011-07-15","2011-08-15","2011-09-15","2011-10-15","2011-11-15","2011-12-15","2012-01-15","2012-02-15","2012-03-15","2012-04-15","2012-05-15","2012-06-15","2012-07-15","2012-08-15","2012-09-15","2012-10-15","2012-11-15","2012-12-15","2013-01-15","2013-02-15","2013-03-15","2013-04-15","2013-05-15","2013-06-15","2013-07-15","2013-08-15","2013-09-15","2013-10-15","2013-11-15","2013-12-15","2014-01-15","2014-02-15","2014-03-15","2014-04-15","2014-05-15","2014-06-15","2014-07-15","2014-08-15","2014-09-15","2014-10-15","2014-11-15","2014-12-15","2015-01-15","2015-02-15","2015-03-15","2015-04-15","2015-05-15","2015-06-15","2015-07-15","2015-08-15","2015-09-15","2015-10-15","2015-11-15","2015-12-15","2016-01-15","2016-02-15","2016-03-15","2016-04-15","2016-05-15","2016-06-15","2016-07-15","2016-08-15","2016-09-15","2016-10-15","2016-11-15","2016-12-15","2017-01-15","2017-02-15","2017-03-15","2017-04-15","2017-05-15","2017-06-15","2017-07-15","2017-08-15","2017-09-15","2017-10-15","2017-11-15","2017-12-15","2018-01-15","2018-02-15","2018-03-15","2018-04-15","2018-05-15","2018-06-15","2018-07-15","2018-08-15","2018-09-15","2018-10-15","2018-11-15","2018-12-15","2019-01-15","2019-02-15","2019-03-15","2019-04-15","2019-05-15","2019-06-15","2019-07-15","2019-08-15","2019-09-15","2019-10-15","2019-11-15","2019-12-15","2020-01-15","2020-02-15","2020-03-15","2020-04-15","2020-05-15","2020-06-15","2020-07-15","2020-08-15","2020-09-15","2020-10-15","2020-11-15","2020-12-15","2021-01-15","2021-02-15","2021-03-15","2021-04-15","2021-05-15","2021-06-15","2021-07-15","2021-08-15","2021-09-15","2021-10-15","2021-11-15","2021-12-15","2022-01-15","2022-02-15","2022-03-15","2022-04-15","2022-05-15","2022-06-15","2022-07-15","2022-08-15","2022-09-15","2022-10-15","2022-11-15","2022-12-15","2023-01-15","2023-02-15","2023-03-15","2023-04-15","2023-05-15","2023-06-15","2023-07-15","2023-08-15","2023-09-15","2023-10-15","2023-11-15","2023-12-15","2024-01-15"]),
+      	'kg21': this.constructDateOptions(["2005-01-15","2005-02-15","2005-03-15","2005-04-15","2005-05-15","2005-06-15","2005-07-15","2005-08-15","2005-09-15","2005-10-15","2005-11-15","2005-12-15","2006-01-15","2006-02-15","2006-03-15","2006-04-15","2006-05-15","2006-06-15","2006-07-15","2006-08-15","2006-09-15","2006-10-15","2006-11-15","2006-12-15","2007-01-15","2007-02-15","2007-03-15","2007-04-15","2007-05-15","2007-06-15","2007-07-15","2007-08-15","2007-09-15","2007-10-15","2007-11-15","2007-12-15","2008-01-15","2008-02-15","2008-03-15","2008-04-15","2008-05-15","2008-06-15","2008-07-15","2008-08-15","2008-09-15","2008-10-15","2008-11-15","2008-12-15","2009-01-15","2009-02-15","2009-03-15","2009-04-15","2009-05-15","2009-06-15","2009-07-15","2009-08-15","2009-09-15","2009-10-15","2009-11-15","2009-12-15","2010-01-15","2010-02-15","2010-03-15","2010-04-15","2010-05-15","2010-06-15","2010-07-15","2010-08-15","2010-09-15","2010-10-15","2010-11-15","2010-12-15","2011-01-15","2011-02-15","2011-03-15","2011-04-15","2011-05-15","2011-06-15","2011-07-15","2011-08-15","2011-09-15","2011-10-15","2011-11-15","2011-12-15","2012-01-15","2012-02-15","2012-03-15","2012-04-15","2012-05-15","2012-06-15","2012-07-15","2012-08-15","2012-09-15","2012-10-15","2012-11-15","2012-12-15","2013-01-15","2013-02-15","2013-03-15","2013-04-15","2013-05-15","2013-06-15","2013-07-15","2013-08-15","2013-09-15","2013-10-15","2013-11-15","2013-12-15","2014-01-15","2014-02-15","2014-03-15","2014-04-15","2014-05-15","2014-06-15","2014-07-15","2014-08-15","2014-09-15","2014-10-15","2014-11-15","2014-12-15","2015-01-15","2015-02-15","2015-03-15","2015-04-15","2015-05-15","2015-06-15","2015-07-15","2015-08-15","2015-09-15","2015-10-15","2015-11-15","2015-12-15","2016-01-15","2016-02-15","2016-03-15","2016-04-15","2016-05-15","2016-06-15","2016-07-15","2016-08-15","2016-09-15","2016-10-15","2016-11-15","2016-12-15","2017-01-15","2017-02-15","2017-03-15","2017-04-15","2017-05-15","2017-06-15","2017-07-15","2017-08-15","2017-09-15","2017-10-15","2017-11-15","2017-12-15","2018-01-15","2018-02-15","2018-03-15","2018-04-15","2018-05-15","2018-06-15","2018-07-15","2018-08-15","2018-09-15","2018-10-15","2018-11-15","2018-12-15","2019-01-15","2019-02-15","2019-03-15","2019-04-15","2019-05-15","2019-06-15","2019-07-15","2019-08-15","2019-09-15","2019-10-15","2019-11-15","2019-12-15","2020-01-15","2020-02-15","2020-03-15","2020-04-15","2020-05-15","2020-06-15","2020-07-15","2020-08-15","2020-09-15","2020-10-15","2020-11-15","2020-12-15"]),
+		'glodap': this.constructDateOptions(["1000-01-01"])
+      }[this.state.lattice]
       this.reflink = {
-      	'rg09_temperature': 'https://sio-argo.ucsd.edu/RG_Climatology.html',
-      	'rg09_salinity': 'https://sio-argo.ucsd.edu/RG_Climatology.html',
-      	'kg21_ohc15to300': 'https://zenodo.org/record/6131625#.Y3P5FILMKWA'
-      }[this.state.selectedGrid]
-      this.title = {
-      	'rg09_temperature': 'RG Temperature',
-      	'rg09_salinity': 'RG Salinity',
-      	'kg21_ohc15to300': 'KG Ocean heat content'
-      }[this.state.selectedGrid]
+      	'rg09': 'https://sio-argo.ucsd.edu/RG_Climatology.html',
+      	'kg21': 'https://zenodo.org/record/6131625#.Y3P5FILMKWA',
+		'glodap': 'TBD'
+      }[this.state.lattice]
+      this.state.title = this.chooseTitle(this.state.grid)
+	  this.variables = {
+		'rg09': this.constructDateOptions(['rg09_temperature', 'rg09_salinity']), // not used... yet.
+		'kg21': this.constructDateOptions(['kg21_ohc15to300']), // not used... yet.
+		'glodap': this.constructDateOptions(this.glodapDataInfo[0])
+	  }[this.state.lattice]
 
       this.fgRef = React.createRef()
       this.statusReporting = React.createRef()
       this.formRef = React.createRef()
       this.scales = {
-      	'rg09_temperature': '',
-      	'rg09_salinity': '',
-      	'kg21_ohc15to300': 'G'
-      }[this.state.selectedGrid]
+      	'rg09': '',
+      	'kg21': 'G',
+		'glodap': ''
+      }[this.state.lattice]
       this.apiPrefix = 'https://argovis-api.colorado.edu/'
-     	this.customQueryParams = ['polygon', 'selectedGrid', 'levelindex', 'sublevelindex', 'timestep', 'subtimestep', 'subgrid']
+     	this.customQueryParams = ['polygon', 'grid', 'levelindex', 'sublevelindex', 'timestep', 'subtimestep', 'subgrid']
       this.vocab = {}
 
       this.componentDidUpdate()
     }
 
+	// componentDidMount() {
+	// 	this.fetchData();
+	// }
+	
+	// fetchData() {
+	// 	fetch('https://argovis-api.colorado.edu/grids/meta?id=glodapv2.2016b')
+	// 	.then((response) => {
+	// 		if (!response.ok) {
+	// 			throw new Error(`HTTP error! Status: ${response.status}`);
+	// 		}
+	// 		return response.json();
+	// 	})
+	// 	.then((jsonData) => {
+	// 		this.demo = jsonData[0]['data_info']
+	// 		console.log(this.demo)
+	// 	});
+	// }
+
+	chooseTitle(grid){
+		if(grid === 'rg09_temperature'){
+			return 'RG Temperature'
+		} else if(grid === 'rg09_salinity'){
+			return 'RG Salinity'
+		} else if(grid === 'kg21_ohc15to300'){
+			return 'KG Ocean Heat Content'
+		} else {
+			return 'GLODAP ' + grid
+		}
+	}
+
+	chooseUnits(grid){
+		if(grid === 'rg09_temperature'){
+			return 'degree celcius (ITS-90)'
+		} else if(grid === 'rg09_salinity'){
+			return 'psu'
+		} else if(grid === 'kg21_ohc15to300'){
+			return 'J/m^2'
+		} else {
+			let i = this.glodapDataInfo[0].indexOf(grid)
+			return this.glodapDataInfo[2][i][0]
+		}
+	}
+
     componentDidUpdate(prevProps, prevState, snapshot){
     	let s = {...this.state}  // transform a copy of state until we're happy with it, and write it back
-
+		
     	if(s.refreshData){
+			
     		if(this.formRef.current){
 	    		this.formRef.current.setAttribute('disabled', 'true')
 	    	}
     		if(this.statusReporting.current){
 					helpers.manageStatus.bind(this)('downloading')
-				}
+			}
 	    	//kick off request for new data, redraw the map when complete
-	    	let url    = this.apiPrefix + 'grids/' + s.lattice+'?data='+s.selectedGrid+'&startDate='+s.timestep+'T00:00:00Z&endDate='+s.timestep+'T00:00:01Z&verticalRange='+(this.rawLevels[s.levelindex]-0.1)+','+(this.rawLevels[s.levelindex]+0.1)
-	    	let suburl = this.apiPrefix + 'grids/' + s.lattice+'?data='+s.selectedGrid+'&startDate='+s.subtimestep+'T00:00:00Z&endDate='+s.subtimestep+'T00:00:01Z&verticalRange='+(this.rawLevels[s.sublevelindex]-0.1)+','+(this.rawLevels[s.sublevelindex]+0.1)
+	    	let url    = this.apiPrefix + 'grids/' + s.lattice+'?data='+s.grid+'&startDate='+s.timestep+'T00:00:00Z&endDate='+s.timestep+'T00:00:01Z&verticalRange='+(this.rawLevels[s.levelindex]-0.1)+','+(this.rawLevels[s.levelindex]+0.1)
+			let suburl = this.apiPrefix + 'grids/' + s.lattice+'?data='+s.grid+'&startDate='+s.subtimestep+'T00:00:00Z&endDate='+s.subtimestep+'T00:00:01Z&verticalRange='+(this.rawLevels[s.sublevelindex]-0.1)+','+(this.rawLevels[s.sublevelindex]+0.1)
 	    	if(s.polygon.length > 0){
 	    		url += '&polygon='+JSON.stringify(helpers.tidypoly(s.polygon))
 	    		suburl += '&polygon='+JSON.stringify(helpers.tidypoly(s.polygon))
 	    	}
 
 	    	if(s.subgrid){
-					Promise.all([url,suburl].map(x => fetch(x, {headers:{'x-argokey': s.apiKey}}))).then(responses => {
-						Promise.all(responses.map(res => res.json())).then(data => {
-							// start by checking for error codes
-							for(let i=0; i<data.length; i++){
-								let bail = helpers.handleHTTPcodes.bind(this)(data[i].code)
-								if(bail){
-									return
-								}
+				Promise.all([url,suburl].map(x => fetch(x, {headers:{'x-argokey': s.apiKey}}))).then(responses => {
+					Promise.all(responses.map(res => res.json())).then(data => {
+						// start by checking for error codes
+						for(let i=0; i<data.length; i++){
+							let bail = helpers.handleHTTPcodes.bind(this)(data[i].code)
+							if(bail){
+								return
 							}
-							s.points = data[0]
-							s.subpoints = data[1]
-							// construct grid subtraction delta
-							/// start by turning grids into kv keyed by unique concatenation of lon/lat so we can easily subtract the correct pairs of points
-							let grid1 = {}
-							for(let i=0; i<data[0].length; i++){
-								grid1['' + data[0][i].geolocation.coordinates[0] + data[0][i].geolocation.coordinates[1]] = {
-									geolocation: data[0][i].geolocation,
-									data: data[0][i].data
-								}
+						}
+						s.points = data[0]
+						s.subpoints = data[1]
+						// construct grid subtraction delta
+						/// start by turning grids into kv keyed by unique concatenation of lon/lat so we can easily subtract the correct pairs of points
+						let grid1 = {}
+						for(let i=0; i<data[0].length; i++){
+							grid1['' + data[0][i].geolocation.coordinates[0] + data[0][i].geolocation.coordinates[1]] = {
+								geolocation: data[0][i].geolocation,
+								data: data[0][i].data
 							}
-							let grid2 = {}
-							for(let i=0; i<data[1].length; i++){
-								grid2['' + data[1][i].geolocation.coordinates[0] + data[1][i].geolocation.coordinates[1]] = {
-									geolocation: data[1][i].geolocation,
-									data: data[1][i].data
-								}
+						}
+						let grid2 = {}
+						for(let i=0; i<data[1].length; i++){
+							grid2['' + data[1][i].geolocation.coordinates[0] + data[1][i].geolocation.coordinates[1]] = {
+								geolocation: data[1][i].geolocation,
+								data: data[1][i].data
 							}
-							/// subrtract grids, produce a list of objects that is 'profile-like' where data are the delta values
-							s.data = []
-							for(let i=0; i<Object.keys(grid1).length; i++){
-								let key = Object.keys(grid1)[i]
-								if(Object.keys(grid2).includes(key)){
-									s.data.push({
-										geolocation: grid1[key].geolocation,
-										data: [[grid1[key].data[0][0] - grid2[key].data[0][0]]]
-									})
-								}
+						}
+						/// subrtract grids, produce a list of objects that is 'profile-like' where data are the delta values
+						s.data = []
+						for(let i=0; i<Object.keys(grid1).length; i++){
+							let key = Object.keys(grid1)[i]
+							if(Object.keys(grid2).includes(key)){
+								s.data.push({
+									geolocation: grid1[key].geolocation,
+									data: [[grid1[key].data[0][0] - grid2[key].data[0][0]]]
+								})
 							}
-							helpers.manageStatus.bind(this)('rendering')
-							let values = s.data.map(x=>x.data[0][0]).filter(x=>x!==null)
-							s = this.setScale(Math.min(...values), Math.max(...values), s)
-							helpers.setQueryString.bind(this)()
-							this.refreshMap(false, Math.min(...values), Math.max(...values), s)	
-						})
+						}
+						helpers.manageStatus.bind(this)('rendering')
+						let values = s.data.map(x=>x.data[0][0]).filter(x=>x!==null)
+						let min = this.state.user_defined_min ? this.state.min : Math.min(...values)
+						let max = this.state.user_defined_max ? this.state.max : Math.max(...values)
+						s = this.setScale(min, max, s)
+						helpers.setQueryString.bind(this)()
+						this.refreshMap(false, min, max, s)	
 					})
-				} else {
-					Promise.all([url].map(x => fetch(x, {headers:{'x-argokey': s.apiKey}}))).then(responses => {
-						Promise.all(responses.map(res => res.json())).then(data => {
-							// start by checking for error codes
-							for(let i=0; i<data.length; i++){
-								let bail = helpers.handleHTTPcodes.bind(this)(data[i].code)
-								if(bail){
-									return
-								}
+				})
+			} else {
+				Promise.all([url].map(x => fetch(x, {headers:{'x-argokey': s.apiKey}}))).then(responses => {
+					Promise.all(responses.map(res => res.json())).then(data => {
+						// start by checking for error codes
+						for(let i=0; i<data.length; i++){
+							let bail = helpers.handleHTTPcodes.bind(this)(data[i].code)
+							if(bail){
+								return
 							}
-							s.points = data[0]
-							s.data = data[0]
-							helpers.manageStatus.bind(this)('rendering')
-							let values = s.data.map(x=>x.data[0][0]).filter(x=>x!==null)
-							s = this.setScale(Math.min(...values), Math.max(...values), s)
-							helpers.setQueryString.bind(this)()
-							this.refreshMap(false, Math.min(...values), Math.max(...values), s)	
-						}) 
-					})
-				}
-
+						}
+						s.points = data[0]
+						s.data = data[0]
+						helpers.manageStatus.bind(this)('rendering')
+						let values = s.data.map(x=>x.data[0][0]).filter(x=>x!==null)
+						let min = this.state.user_defined_min ? this.state.min : Math.min(...values)
+						let max = this.state.user_defined_max ? this.state.max : Math.max(...values)
+						s = this.setScale(min, max, s)
+						helpers.setQueryString.bind(this)()
+						this.refreshMap(false, min, max, s)	
+					}) 
+				})
 			}
+		} else if(s.remapData){
+			let values = s.data.map(x=>x.data[0][0]).filter(x=>x!==null)
+			let min = this.state.user_defined_min ? this.state.min : Math.min(...values)
+			let max = this.state.user_defined_max ? this.state.max : Math.max(...values)
+			s = this.setScale(min, max, s)
+			helpers.setQueryString.bind(this)()
+			this.refreshMap(false, min, max, s)	
+		}
     }
 
     // input handlers
@@ -180,6 +666,8 @@ class Grids extends React.Component {
     	let s = this.state
     	s[index] = parseInt(target.target.value)
     	s.refreshData = true
+		s.user_defined_min = false
+		s.user_defined_max = false
     	this.setState(s)
     }
 
@@ -187,6 +675,18 @@ class Grids extends React.Component {
     	let s = this.state
     	s[index] = target.target.value
     	s.refreshData = true
+		s.user_defined_min = false
+		s.user_defined_max = false
+    	this.setState(s)
+    }
+
+    changeVariable(target, index){
+    	let s = this.state
+    	s[index] = target.target.value
+		s.title = this.chooseTitle(target.target.value)
+    	s.refreshData = true
+		s.user_defined_min = false
+		s.user_defined_max = false
     	this.setState(s)
     }
 
@@ -206,14 +706,16 @@ class Grids extends React.Component {
     refreshMap(needNewData, min, max, state){
     	// redraw the map and render the dom
     	if(state.points.length > 0){
-				this.setState({...state, 
-												grid: this.gridRasterfy(state), 
-												min: min, 
-												max: max, 
-												refreshData: needNewData
-											}, () => {
-													helpers.manageStatus.bind(this)('ready')
-												})
+			this.setState({
+					...state, 
+					gridcells: this.gridRasterfy(state), 
+					min: this.state.user_defined_min ? this.state.min : min, 
+					max: this.state.user_defined_max ? this.state.max : max, 
+					refreshData: needNewData,
+					remapData: false
+				}, 
+				() => {helpers.manageStatus.bind(this)('ready')}
+			)
 	    } else {
 	    	helpers.manageStatus.bind(this)('error', 'No data found for this search.')
 	    }
@@ -260,6 +762,10 @@ class Grids extends React.Component {
     }
 
     unitTransform(unit, scale){
+		if (unit === '' || unit === '-'){
+			return unit
+		}
+
     	if(scale === 'k'){
     		return Math.round(unit)/1000
     	} else if(scale === 'M'){
@@ -316,7 +822,10 @@ class Grids extends React.Component {
 
 	toggleCoupling(s){
     	// if changing a toggle for this page needs to trigger a side effect on state, do so here.
-    	return s
+		s.user_defined_min = false
+		s.user_defined_max = false
+		
+		return s
   }
 
 	render(){
@@ -342,7 +851,7 @@ class Grids extends React.Component {
 									>
 										<i style={{'float':'right'}} className="fa fa-question-circle" aria-hidden="true"></i>
                                     </OverlayTrigger>
-									{'Explore ' + this.title}		
+									{'Explore ' + this.state.title}		
 								</h5>
 								<small><a target="_blank" rel="noreferrer" href={this.reflink}>Original Data Reference</a></small>
 								<div className="form-floating mb-3" style={{'marginTop': '0.5em'}}>
@@ -361,6 +870,7 @@ class Grids extends React.Component {
 											</select>
 										</div>
 									</div>
+									{this.state.lattice !== 'glodap' && 
 									<div className='row'>
 										<div className='col-12'>
 											<small className="form-text text-muted">Month</small>
@@ -368,7 +878,16 @@ class Grids extends React.Component {
 												{this.timesteps}
 											</select>
 										</div>
-									</div>
+									</div>}
+									{this.state.lattice === 'glodap' && 
+									<div className='row'>
+										<div className='col-12'>
+											<small className="form-text text-muted">Variable</small>
+											<select className="form-select" value={this.state.grid} onChange={(v) => this.changeVariable(v, 'grid')}>
+												{this.variables}
+											</select>
+										</div>
+									</div>}
 								</div>
 
 								<div className="form-check" style={{'marginTop': '1em'}}>
@@ -385,16 +904,54 @@ class Grids extends React.Component {
 											</select>
 										</div>
 									</div>
-									<div className='row'>
+									{this.state.lattice !== 'glodap' && <div className='row'>
 										<div className='col-12'>
 											<small className="form-text text-muted">Subtraction Month</small>
 											<select className="form-select" value={this.state.subtimestep} onChange={(v) => this.changeDate(v, 'subtimestep')}>
 												{this.timesteps}
 											</select>
 										</div>
-									</div>
+									</div>}
 								</div>
 
+								<div className='row'>
+	      							<div className='col-6' style={{'paddingRight': '0px'}}>
+										<div className="form-text">
+						  					<span>color min</span>
+										</div>
+										<input 
+											type="text" 
+											className="form-control minmax" 
+											placeholder="Auto" 
+											value={this.unitTransform(this.state.min, this.scales)}
+											onChange={e => {
+												helpers.manageStatus.bind(this)('actionRequired', 'Hit return or click outside the current input to update.')
+												this.setState({min:e.target.value})}
+											} 
+											onBlur={e => {this.setState({min: parseFloat(e.target.defaultValue), user_defined_min: e.target.defaultValue!=='', remapData: true})}}
+											onKeyPress={e => {if(e.key==='Enter'){this.setState({min: parseFloat(e.target.defaultValue), user_defined_min: e.target.defaultValue!=='', remapData: true})}}}
+											aria-label="xmin" 
+											aria-describedby="basic-addon1"/>
+									</div>
+									<div className='col-6' style={{'paddingRight': '0px'}}>
+										<div className="form-text">
+						  					<span>color max</span>
+										</div>
+										<input 
+											type="text"
+											className="form-control minmax" 
+											placeholder="Auto" 
+											value={this.unitTransform(this.state.max, this.scales)}
+											onChange={e => {
+												helpers.manageStatus.bind(this)('actionRequired', 'Hit return or click outside the current input to update.')
+												this.setState({max:e.target.value})}
+											} 
+											onBlur={e => {this.setState({max: parseFloat(e.target.defaultValue), user_defined_max: e.target.defaultValue!=='', remapData: true})}}
+											onKeyPress={e => {if(e.key==='Enter'){this.setState({max: parseFloat(e.target.defaultValue), user_defined_max: e.target.defaultValue!=='', remapData: true})}}}
+											aria-label="xmax" 
+											aria-describedby="basic-addon1"/>
+									</div>
+								</div>
 								
 								<svg style={{'width':'100%', 'height':'1em', 'marginTop': '1em'}} version="1.1" xmlns="http://www.w3.org/2000/svg">
 								  <defs>
@@ -415,9 +972,9 @@ class Grids extends React.Component {
 								  <rect width="100%" height="1em" fill="url(#grad)" />
 								</svg>
 								<div style={{'width':'100%', 'textAlign': 'center'}}>
-									<span style={{'writingMode': 'vertical-rl', 'textOrientation': 'mixed', 'float': 'left', 'marginTop':'0.5em'}}>{this.unitTransform(this.state.min, this.scales)}</span>
+									<span style={{'writingMode': 'vertical-rl', 'textOrientation': 'mixed', 'float': 'left', 'marginTop':'0.5em'}}>{(this.state.subgrid && this.state.min>0) ? 0 : this.unitTransform(this.state.min, this.scales)}</span>
 									<span>{this.scales+this.state.units}</span>
-									<span style={{'writingMode': 'vertical-rl', 'textOrientation': 'mixed', 'float':'right', 'marginTop':'0.5em'}}>{this.unitTransform(this.state.max, this.scales)}</span>
+									<span style={{'writingMode': 'vertical-rl', 'textOrientation': 'mixed', 'float':'right', 'marginTop':'0.5em'}}>{(this.state.subgrid && this.state.max<0) ? 0: this.unitTransform(this.state.max, this.scales)}</span>
 								</div>
 							</div>
 						</fieldset>
@@ -455,7 +1012,7 @@ class Grids extends React.Component {
 						    />
 						    <Polygon key={Math.random()} positions={this.state.interpolated_polygon.map(x => [x[1],x[0]])} fillOpacity={0}></Polygon>
 						  </FeatureGroup>
-              				{this.state.grid}
+              				{this.state.gridcells}
 						</MapContainer>
 					</div>
 				</div>
