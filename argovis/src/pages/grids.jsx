@@ -1021,24 +1021,25 @@ class Grids extends React.Component {
 									</div>}
 								</div>
 
-                                {this.state.lattice !== 'localGPintegral' &&
 								<div className="form-check" style={{'marginTop': '1em'}}>
 									<input className="form-check-input" checked={this.state.subgrid} onChange={this.toggleSubgrid.bind(this)} type="checkbox" id='subgrid'></input>
-									{this.state.lattice !== 'glodap' &&
+									{this.state.lattice !== 'glodap' && this.state.lattice !== 'localGPintegral' &&
 									<label className="form-check-label" htmlFor='subgrid'>Subtract another level or date</label>}
 									{this.state.lattice === 'glodap' &&
 									<label className="form-check-label" htmlFor='subgrid'>Subtract another level</label>}
-								</div>}
+                                    {this.state.lattice === 'localGPintegral' && 
+									<label className="form-check-label" htmlFor='subgrid'>Subtract another date</label>}
+                                </div>
 
 								<div style={{'display': this.state.subgrid ? 'block' : 'none'}}>
-									<div className='row'>
+                                    {this.state.lattice !== 'localGPintegral' && <div className='row'>
 										<div className='col-12'>
 											<small className="form-text text-muted">Subtraction Depth Layer [m]</small>
 											<select className="form-select" value={this.state.sublevelindex} onChange={(v) => this.changeLevel(v, 'sublevelindex')}>
 												{this.levels}
 											</select>
 										</div>
-									</div>
+									</div>}
 									{this.state.lattice !== 'glodap' && <div className='row'>
 										<div className='col-12'>
 											<small className="form-text text-muted">Subtraction Month</small>
