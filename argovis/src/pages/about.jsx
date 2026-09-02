@@ -121,10 +121,11 @@ class ArgoAbout extends React.Component {
 
 						<h3>Acknowledgements</h3>
 						<p>Argovis is hosted on a server of the Department of Atmospheric and Oceanic Sciences (ATOC) at the 
-						University of Colorado Boulder. <b>Currently, Argovis is funded by the NSF Earthcube program (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2026954&HistoricalAwards=false'>Award #2026954</a>) and by the NSF Physical Oceanography, GEO Cyberinfrastructure, Polar Cyberinfrastructure, Software Institutes programs (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2311919&HistoricalAwards=false'>Award #2311919</a>).</b></p>
+						University of Colorado Boulder. <b>Currently, Argovis is funded by the NSF Physical Oceanography, GEO Cyberinfrastructure, Polar Cyberinfrastructure, Software Institutes programs (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2311919&HistoricalAwards=false'>Award #2311919</a>).</b></p>
 						<p>In the past, Argovis has been funded by (starting with the most recent):</p>
 						<ul>
-							<li>NSF Earthcube program (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=1928305&HistoricalAwards=false'>Award #1928305</a>)</li>
+							<li>NSF Earthcube program (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2026954&HistoricalAwards=false'>Award #2026954</a>)</li>
+                            <li>NSF Earthcube program (<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=1928305&HistoricalAwards=false'>Award #1928305</a>)</li>
 							<li>Giglio's research funds provided by University of Colorado Boulder</li>
 							<li>the SOCCOM Project through grant number NSF PLR-1425989</li>
 							<li>the US Argo Program through NOAA Grant NA15OAR4320071 (CIMEC)
