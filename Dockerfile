@@ -1,50 +1,57 @@
-FROM node:22.2.0 as base
+# ---------------------------------------------------------------------------
+# base: dependencies + source. Everything is pinned by argovis/package-lock.json,
+# so `npm ci` installs exactly the same tree on every build.
+# ---------------------------------------------------------------------------
+FROM node:22-bookworm AS base
 
-RUN apt-get update -y; apt-get install -y nano cron ; apt-get upgrade -y
-
-WORKDIR /react
-RUN npm install react react-dom create-react-app
-RUN npx create-react-app argovis
 WORKDIR /react/argovis
-RUN npm install --force react-leaflet \
-						leaflet \
-						react-leaflet-draw \
-						react-router-dom \
-						chroma-js \
-						react-autosuggest \
-						react-plotly.js \
-						plotly.js \
-						leaflet-geometryutil \
-						react-bootstrap \
-						jest-canvas-mock \
-                        react-datetime \
-                        proj4 \
-                        proj4leaflet
+
+# Install dependencies first so source edits don't invalidate this layer.
+COPY argovis/package.json argovis/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+
+COPY argovis/.env .env
 COPY argovis/src src
 COPY argovis/public public
-COPY argovis/package.json package.json
-COPY generate_argo_sitemap.sh generate_argo_sitemap.sh 
+
+# ---------------------------------------------------------------------------
+# dev: hot-reloading dev server. See README for the bind-mount invocation.
+# ---------------------------------------------------------------------------
+FROM base AS dev
+CMD ["npm", "start"]
+
+# ---------------------------------------------------------------------------
+# build: compile the static site, and fetch supercronic here (this image has
+# curl) so the runtime image below needs no apt at all.
+# ---------------------------------------------------------------------------
+FROM base AS build
+RUN npm run build
 
 # Latest releases available at https://github.com/aptible/supercronic/releases
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.2.30/supercronic-linux-amd64 \
     SUPERCRONIC=supercronic-linux-amd64 \
     SUPERCRONIC_SHA1SUM=9f27ad28c5c57cd133325b2a66bba69ba2235799
-RUN curl -fsSLO "$SUPERCRONIC_URL" \
- && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
- && chmod +x "$SUPERCRONIC" \
- && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
- && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+RUN curl -fsSL --retry 5 --retry-delay 5 -o "/usr/local/bin/${SUPERCRONIC}" "$SUPERCRONIC_URL" \
+ && echo "${SUPERCRONIC_SHA1SUM}  /usr/local/bin/${SUPERCRONIC}" | sha1sum -c - \
+ && chmod +x "/usr/local/bin/${SUPERCRONIC}"
 
-FROM base as prod
-RUN npm run build
-RUN npm install -g serve
-RUN cd /react && npm uninstall create-react-app
-COPY crontab crontab
-COPY entrypoint.sh entrypoint.sh
-RUN chown -R 1000660000 /react/argovis ; chmod 777 generate_argo_sitemap.sh
-CMD ["bash", "entrypoint.sh"]
+# ---------------------------------------------------------------------------
+# prod: static files + `serve` + supercronic for the nightly sitemap job.
+# No node_modules, no build toolchain. Paths match the old image so crontab,
+# entrypoint.sh and generate_argo_sitemap.sh are unchanged.
+# ---------------------------------------------------------------------------
+FROM node:22-bookworm-slim AS prod
+
+RUN npm install -g serve --no-audit --no-fund
+
+WORKDIR /react/argovis
+COPY --from=build /react/argovis/build build
+COPY --from=build /usr/local/bin/supercronic-linux-amd64 /usr/local/bin/supercronic-linux-amd64
+RUN ln -s /usr/local/bin/supercronic-linux-amd64 /usr/local/bin/supercronic
+
+COPY crontab entrypoint.sh generate_argo_sitemap.sh ./
+
+# OpenShift runs the container as an arbitrary UID; the sitemap job writes into build/.
+RUN chmod +x generate_argo_sitemap.sh && chown -R 1000660000 /react/argovis
 USER 1000660000
-
-FROM base as dev
-RUN rm /react/argovis/src/App*
-CMD service cron start ; npm start
+CMD ["bash", "entrypoint.sh"]
