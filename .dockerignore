@@ -3,9 +3,3 @@
 **/.DS_Store
 argovis/node_modules
 argovis/build
-Dockerfile.hotfix
-# stray local scratch files
-xx
-qq
-wget-log
-argovis/xx
